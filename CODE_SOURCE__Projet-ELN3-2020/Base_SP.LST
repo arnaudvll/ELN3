@@ -1,0 +1,1079 @@
+A51 MACRO ASSEMBLER  BASE_SP                                                              06/11/2021 11:54:54 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN Base_SP.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Base_SP.asm NOMOD51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;-----------------------------------------------------------------------------
+                       2     ;
+                       3     ;  FILE NAME   :  BASE_SP.ASM 
+                       4     ;  TARGET MCU  :  C8051F020 
+                       5     ;  
+                       6     ;-----------------------------------------------------------------------------
+                       7     ;$include (c8051f020.inc) ; Include register definition file. 
+                +1     8     ;-----------------------------------------------------------------------------
+                +1     9     ;       
+                +1    10     ;       
+                +1    11     ;
+                +1    12     ;
+                +1    13     ;       FILE NAME       : C8051F020.INC 
+                +1    14     ;       TARGET MCUs     : C8051F020, 'F021, 'F022, 'F023 
+                +1    15     ;       DESCRIPTION     : Register/bit definitions for the C8051F02x product family.  
+                +1    16     ;
+                +1    17     ;       REVISION 1.0    
+                +1    18     ;
+                +1    19     ;-----------------------------------------------------------------------------
+                +1    20     ;REGISTER DEFINITIONS
+                +1    21     ;
+  0080          +1    22     P0       DATA  080H   ; PORT 0
+  0081          +1    23     SP       DATA  081H   ; STACK POINTER
+  0082          +1    24     DPL      DATA  082H   ; DATA POINTER - LOW BYTE
+  0083          +1    25     DPH      DATA  083H   ; DATA POINTER - HIGH BYTE
+  0084          +1    26     P4       DATA  084H   ; PORT 4
+  0085          +1    27     P5       DATA  085H   ; PORT 5
+  0086          +1    28     P6       DATA  086H   ; PORT 6
+  0087          +1    29     PCON     DATA  087H   ; POWER CONTROL
+  0088          +1    30     TCON     DATA  088H   ; TIMER CONTROL
+  0089          +1    31     TMOD     DATA  089H   ; TIMER MODE
+  008A          +1    32     TL0      DATA  08AH   ; TIMER 0 - LOW BYTE
+  008B          +1    33     TL1      DATA  08BH   ; TIMER 1 - LOW BYTE
+  008C          +1    34     TH0      DATA  08CH   ; TIMER 0 - HIGH BYTE
+  008D          +1    35     TH1      DATA  08DH   ; TIMER 1 - HIGH BYTE
+  008E          +1    36     CKCON    DATA  08EH   ; CLOCK CONTROL
+  008F          +1    37     PSCTL    DATA  08FH   ; PROGRAM STORE R/W CONTROL
+  0090          +1    38     P1       DATA  090H   ; PORT 1
+  0091          +1    39     TMR3CN   DATA  091H   ; TIMER 3 CONTROL
+  0092          +1    40     TMR3RLL  DATA  092H   ; TIMER 3 RELOAD REGISTER - LOW BYTE
+  0093          +1    41     TMR3RLH  DATA  093H   ; TIMER 3 RELOAD REGISTER - HIGH BYTE
+  0094          +1    42     TMR3L    DATA  094H   ; TIMER 3 - LOW BYTE
+  0095          +1    43     TMR3H    DATA  095H   ; TIMER 3 - HIGH BYTE
+  0096          +1    44     P7       DATA  096H   ; PORT 7
+  0098          +1    45     SCON0    DATA  098H   ; SERIAL PORT 0 CONTROL
+  0099          +1    46     SBUF0    DATA  099H   ; SERIAL PORT 0 BUFFER
+  009A          +1    47     SPI0CFG  DATA  09AH   ; SERIAL PERIPHERAL INTERFACE 0 CONFIGURATION
+  009B          +1    48     SPI0DAT  DATA  09BH   ; SERIAL PERIPHERAL INTERFACE 0 DATA
+  009C          +1    49     ADC1     DATA  09CH   ; ADC 1 DATA
+  009D          +1    50     SPI0CKR  DATA  09DH   ; SERIAL PERIPHERAL INTERFACE 0 CLOCK RATE CONTROL
+  009E          +1    51     CPT0CN   DATA  09EH   ; COMPARATOR 0 CONTROL
+  009F          +1    52     CPT1CN   DATA  09FH   ; COMPARATOR 1 CONTROL 
+  00A0          +1    53     P2       DATA  0A0H   ; PORT 2
+  00A1          +1    54     EMI0TC   DATA  0A1H   ; EMIF TIMING CONTROL
+  00A3          +1    55     EMI0CF   DATA  0A3H   ; EXTERNAL MEMORY INTERFACE (EMIF) CONFIGURATION
+  00A4          +1    56     P0MDOUT  DATA  0A4H   ; PORT 0 OUTPUT MODE CONFIGURATION
+  00A5          +1    57     P1MDOUT  DATA  0A5H   ; PORT 1 OUTPUT MODE CONFIGURATION
+  00A6          +1    58     P2MDOUT  DATA  0A6H   ; PORT 2 OUTPUT MODE CONFIGURATION
+A51 MACRO ASSEMBLER  BASE_SP                                                              06/11/2021 11:54:54 PAGE     2
+
+  00A7          +1    59     P3MDOUT  DATA  0A7H   ; PORT 3 OUTPUT MODE CONFIGURATION
+  00A8          +1    60     IE       DATA  0A8H   ; INTERRUPT ENABLE
+  00A9          +1    61     SADDR0   DATA  0A9H   ; SERIAL PORT 0 SLAVE ADDRESS
+  00AA          +1    62     ADC1CN  DATA  0AAH   ; ADC 1 CONTROL
+  00AB          +1    63     ADC1CF   DATA  0ABH   ; ADC 1 ANALOG MUX CONFIGURATION
+  00AC          +1    64     AMX1SL   DATA  0ACH   ; ADC 1 ANALOG MUX CHANNEL SELECT
+  00AD          +1    65     P3IF     DATA  0ADH   ; PORT 3 EXTERNAL INTERRUPT FLAGS
+  00AE          +1    66     SADEN1   DATA  0AEH   ; SERIAL PORT 1 SLAVE ADDRESS MASK
+  00AF          +1    67     EMI0CN   DATA  0AFH   ; EXTERNAL MEMORY INTERFACE CONTROL
+  00B0          +1    68     P3       DATA  0B0H   ; PORT 3
+  00B1          +1    69     OSCXCN   DATA  0B1H   ; EXTERNAL OSCILLATOR CONTROL
+  00B2          +1    70     OSCICN   DATA  0B2H   ; INTERNAL OSCILLATOR CONTROL
+  00B5          +1    71     P74OUT   DATA  0B5H   ; PORTS 4 - 7 OUTPUT MODE
+  00B6          +1    72     FLSCL    DATA  0B6H   ; FLASH MEMORY TIMING PRESCALER
+  00B7          +1    73     FLACL    DATA  0B7H   ; FLASH ACESS LIMIT 
+  00B8          +1    74     IP       DATA  0B8H   ; INTERRUPT PRIORITY
+  00B9          +1    75     SADEN0   DATA  0B9H   ; SERIAL PORT 0 SLAVE ADDRESS MASK
+  00BA          +1    76     AMX0CF   DATA  0BAH   ; ADC 0 MUX CONFIGURATION
+  00BB          +1    77     AMX0SL   DATA  0BBH   ; ADC 0 MUX CHANNEL SELECTION
+  00BC          +1    78     ADC0CF   DATA  0BCH   ; ADC 0 CONFIGURATION
+  00BD          +1    79     P1MDIN   DATA  0BDH   ; PORT 1 INPUT MODE
+  00BE          +1    80     ADC0L    DATA  0BEH   ; ADC 0 DATA - LOW BYTE
+  00BF          +1    81     ADC0H    DATA  0BFH   ; ADC 0 DATA - HIGH BYTE 
+  00C0          +1    82     SMB0CN   DATA  0C0H   ; SMBUS 0 CONTROL
+  00C1          +1    83     SMB0STA  DATA  0C1H   ; SMBUS 0 STATUS
+  00C2          +1    84     SMB0DAT  DATA  0C2H   ; SMBUS 0 DATA 
+  00C3          +1    85     SMB0ADR  DATA  0C3H   ; SMBUS 0 SLAVE ADDRESS
+  00C4          +1    86     ADC0GTL  DATA  0C4H   ; ADC 0 GREATER-THAN REGISTER - LOW BYTE
+  00C5          +1    87     ADC0GTH  DATA  0C5H   ; ADC 0 GREATER-THAN REGISTER - HIGH BYTE
+  00C6          +1    88     ADC0LTL  DATA  0C6H   ; ADC 0 LESS-THAN REGISTER - LOW BYTE
+  00C7          +1    89     ADC0LTH  DATA  0C7H   ; ADC 0 LESS-THAN REGISTER - HIGH BYTE
+  00C8          +1    90     T2CON    DATA  0C8H   ; TIMER 2 CONTROL
+  00C9          +1    91     T4CON    DATA  0C9H   ; TIMER 4 CONTROL
+  00CA          +1    92     RCAP2L   DATA  0CAH   ; TIMER 2 CAPTURE REGISTER - LOW BYTE
+  00CB          +1    93     RCAP2H   DATA  0CBH   ; TIMER 2 CAPTURE REGISTER - HIGH BYTE
+  00CC          +1    94     TL2      DATA  0CCH   ; TIMER 2 - LOW BYTE
+  00CD          +1    95     TH2      DATA  0CDH   ; TIMER 2 - HIGH BYTE
+  00CF          +1    96     SMB0CR   DATA  0CFH   ; SMBUS 0 CLOCK RATE
+  00D0          +1    97     PSW      DATA  0D0H   ; PROGRAM STATUS WORD
+  00D1          +1    98     REF0CN   DATA  0D1H   ; VOLTAGE REFERENCE 0 CONTROL
+  00D2          +1    99     DAC0L    DATA  0D2H   ; DAC 0 REGISTER - LOW BYTE
+  00D3          +1   100     DAC0H    DATA  0D3H   ; DAC 0 REGISTER - HIGH BYTE
+  00D4          +1   101     DAC0CN   DATA  0D4H   ; DAC 0 CONTROL
+  00D5          +1   102     DAC1L    DATA  0D5H   ; DAC 1 REGISTER - LOW BYTE
+  00D6          +1   103     DAC1H    DATA  0D6H   ; DAC 1 REGISTER - HIGH BYTE
+  00D7          +1   104     DAC1CN   DATA  0D7H   ; DAC 1 CONTROL
+  00D8          +1   105     PCA0CN   DATA  0D8H   ; PCA 0 COUNTER CONTROL
+  00D9          +1   106     PCA0MD   DATA  0D9H   ; PCA 0 COUNTER MODE
+  00DA          +1   107     PCA0CPM0 DATA  0DAH   ; CONTROL REGISTER FOR PCA 0 MODULE 0
+  00DB          +1   108     PCA0CPM1 DATA  0DBH   ; CONTROL REGISTER FOR PCA 0 MODULE 1
+  00DC          +1   109     PCA0CPM2 DATA  0DCH   ; CONTROL REGISTER FOR PCA 0 MODULE 2
+  00DD          +1   110     PCA0CPM3 DATA  0DDH   ; CONTROL REGISTER FOR PCA 0 MODULE 3
+  00DE          +1   111     PCA0CPM4 DATA  0DEH   ; CONTROL REGISTER FOR PCA 0 MODULE 4
+  00E0          +1   112     ACC      DATA  0E0H   ; ACCUMULATOR
+  00E1          +1   113     XBR0     DATA  0E1H   ; DIGITAL CROSSBAR CONFIGURATION REGISTER 0
+  00E2          +1   114     XBR1     DATA  0E2H   ; DIGITAL CROSSBAR CONFIGURATION REGISTER 1
+  00E3          +1   115     XBR2     DATA  0E3H   ; DIGITAL CROSSBAR CONFIGURATION REGISTER 2
+  00E4          +1   116     RCAP4L   DATA  0E4H   ; TIMER 4 CAPTURE REGISTER - LOW BYTE
+  00E5          +1   117     RCAP4H   DATA  0E5H   ; TIMER 4 CAPTURE REGISTER - HIGH BYTE
+  00E6          +1   118     EIE1     DATA  0E6H   ; EXTERNAL INTERRUPT ENABLE 1
+  00E7          +1   119     EIE2     DATA  0E7H   ; EXTERNAL INTERRUPT ENABLE 2
+  00E8          +1   120     ADC0CN   DATA  0E8H   ; ADC 0 CONTROL
+  00E9          +1   121     PCA0L    DATA  0E9H   ; PCA 0 TIMER - LOW BYTE
+  00EA          +1   122     PCA0CPL0 DATA  0EAH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 0 - LOW BYTE
+  00EB          +1   123     PCA0CPL1 DATA  0EBH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 1 - LOW BYTE
+  00EC          +1   124     PCA0CPL2 DATA  0ECH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 2 - LOW BYTE
+A51 MACRO ASSEMBLER  BASE_SP                                                              06/11/2021 11:54:54 PAGE     3
+
+  00ED          +1   125     PCA0CPL3 DATA  0EDH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 3 - LOW BYTE
+  00EE          +1   126     PCA0CPL4 DATA  0EEH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 4 - LOW BYTE
+  00EF          +1   127     RSTSRC   DATA  0EFH   ; RESET SOURCE 
+  00F0          +1   128     B        DATA  0F0H   ; B REGISTER
+  00F1          +1   129     SCON1    DATA  0F1H   ; SERIAL PORT 1 CONTROL
+  00F2          +1   130     SBUF1    DATA  0F2H   ; SERAIL PORT 1 DATA
+  00F3          +1   131     SADDR1   DATA  0F3H   ; SERAIL PORT 1 
+  00F4          +1   132     TL4      DATA  0F4H   ; TIMER 4 DATA - LOW BYTE
+  00F5          +1   133     TH4      DATA  0F5H   ; TIMER 4 DATA - HIGH BYTE
+  00F6          +1   134     EIP1     DATA  0F6H   ; EXTERNAL INTERRUPT PRIORITY REGISTER 1
+  00F7          +1   135     EIP2     DATA  0F7H   ; EXTERNAL INTERRUPT PRIORITY REGISTER 2
+  00F8          +1   136     SPI0CN   DATA  0F8H   ; SERIAL PERIPHERAL INTERFACE 0 CONTROL 
+  00F9          +1   137     PCA0H    DATA  0F9H   ; PCA 0 TIMER - HIGH BYTE
+  00FA          +1   138     PCA0CPH0 DATA  0FAH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 0 - HIGH BYTE
+  00FB          +1   139     PCA0CPH1 DATA  0FBH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 1 - HIGH BYTE
+  00FC          +1   140     PCA0CPH2 DATA  0FCH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 2 - HIGH BYTE
+  00FD          +1   141     PCA0CPH3 DATA  0FDH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 3 - HIGH BYTE
+  00FE          +1   142     PCA0CPH4 DATA  0FEH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 4 - HIGH BYTE
+  00FF          +1   143     WDTCN    DATA  0FFH   ; WATCHDOG TIMER CONTROL 
+                +1   144     ;
+                +1   145     ;------------------------------------------------------------------------------
+                +1   146     ;BIT DEFINITIONS
+                +1   147     ;
+                +1   148     ; TCON 88H
+  0088          +1   149     IT0      BIT   TCON.0 ; EXT. INTERRUPT 0 TYPE
+  0089          +1   150     IE0      BIT   TCON.1 ; EXT. INTERRUPT 0 EDGE FLAG
+  008A          +1   151     IT1      BIT   TCON.2 ; EXT. INTERRUPT 1 TYPE
+  008B          +1   152     IE1      BIT   TCON.3 ; EXT. INTERRUPT 1 EDGE FLAG
+  008C          +1   153     TR0      BIT   TCON.4 ; TIMER 0 ON/OFF CONTROL
+  008D          +1   154     TF0      BIT   TCON.5 ; TIMER 0 OVERFLOW FLAG
+  008E          +1   155     TR1      BIT   TCON.6 ; TIMER 1 ON/OFF CONTROL
+  008F          +1   156     TF1      BIT   TCON.7 ; TIMER 1 OVERFLOW FLAG
+                +1   157     ;
+                +1   158     ; SCON0 98H
+  0098          +1   159     RI       BIT   SCON0.0 ; RECEIVE INTERRUPT FLAG
+  0099          +1   160     TI       BIT   SCON0.1 ; TRANSMIT INTERRUPT FLAG
+  009A          +1   161     RB8      BIT   SCON0.2 ; RECEIVE BIT 8
+  009B          +1   162     TB8      BIT   SCON0.3 ; TRANSMIT BIT 8
+  009C          +1   163     REN      BIT   SCON0.4 ; RECEIVE ENABLE
+  009D          +1   164     SM2      BIT   SCON0.5 ; MULTIPROCESSOR COMMUNICATION ENABLE
+  009E          +1   165     SM1      BIT   SCON0.6 ; SERIAL MODE CONTROL BIT 1
+  009F          +1   166     SM0      BIT   SCON0.7 ; SERIAL MODE CONTROL BIT 0
+                +1   167     ; 
+                +1   168     ; IE A8H
+  00A8          +1   169     EX0      BIT   IE.0   ; EXTERNAL INTERRUPT 0 ENABLE
+  00A9          +1   170     ET0      BIT   IE.1   ; TIMER 0 INTERRUPT ENABLE
+  00AA          +1   171     EX1      BIT   IE.2   ; EXTERNAL INTERRUPT 1 ENABLE
+  00AB          +1   172     ET1      BIT   IE.3   ; TIMER 1 INTERRUPT ENABLE
+  00AC          +1   173     ES       BIT   IE.4   ; SERIAL PORT INTERRUPT ENABLE
+  00AD          +1   174     ET2      BIT   IE.5   ; TIMER 2 INTERRUPT ENABLE
+  00AF          +1   175     EA       BIT   IE.7   ; GLOBAL INTERRUPT ENABLE
+                +1   176     ;
+                +1   177     ; IP B8H
+  00B8          +1   178     PX0      BIT   IP.0   ; EXTERNAL INTERRUPT 0 PRIORITY
+  00B9          +1   179     PT0      BIT   IP.1   ; TIMER 0 PRIORITY
+  00BA          +1   180     PX1      BIT   IP.2   ; EXTERNAL INTERRUPT 1 PRIORITY
+  00BB          +1   181     PT1      BIT   IP.3   ; TIMER 1 PRIORITY
+  00BC          +1   182     PS       BIT   IP.4   ; SERIAL PORT PRIORITY
+  00BD          +1   183     PT2      BIT   IP.5   ; TIMER 2 PRIORITY
+                +1   184     ;
+                +1   185     ; SMB0CN C0H
+  00C0          +1   186     SMBTOE   BIT   SMB0CN.0 ; SMBUS 0 TIMEOUT ENABLE
+  00C1          +1   187     SMBFTE   BIT   SMB0CN.1 ; SMBUS 0 FREE TIMER ENABLE
+  00C2          +1   188     AA       BIT   SMB0CN.2 ; SMBUS 0 ASSERT/ACKNOWLEDGE FLAG
+  00C3          +1   189     SI       BIT   SMB0CN.3 ; SMBUS 0 INTERRUPT PENDING FLAG
+  00C4          +1   190     STO      BIT   SMB0CN.4 ; SMBUS 0 STOP FLAG
+A51 MACRO ASSEMBLER  BASE_SP                                                              06/11/2021 11:54:54 PAGE     4
+
+  00C5          +1   191     STA      BIT   SMB0CN.5 ; SMBUS 0 START FLAG
+  00C6          +1   192     ENSMB    BIT   SMB0CN.6 ; SMBUS 0 ENABLE 
+                +1   193     ;
+                +1   194     ; T2CON C8H
+  00C8          +1   195     CPRL2    BIT   T2CON.0 ; CAPTURE OR RELOAD SELECT
+  00C9          +1   196     CT2      BIT   T2CON.1 ; TIMER OR COUNTER SELECT
+  00CA          +1   197     TR2      BIT   T2CON.2 ; TIMER 2 ON/OFF CONTROL
+  00CB          +1   198     EXEN2    BIT   T2CON.3 ; TIMER 2 EXTERNAL ENABLE FLAG
+  00CC          +1   199     TCLK     BIT   T2CON.4 ; TRANSMIT CLOCK FLAG
+  00CD          +1   200     RCLK     BIT   T2CON.5 ; RECEIVE CLOCK FLAG
+  00CE          +1   201     EXF2     BIT   T2CON.6 ; EXTERNAL FLAG
+  00CF          +1   202     TF2      BIT   T2CON.7 ; TIMER 2 OVERFLOW FLAG
+                +1   203     ;
+                +1   204     ; PSW D0H
+  00D0          +1   205     P        BIT   PSW.0  ; ACCUMULATOR PARITY FLAG
+  00D1          +1   206     F1       BIT   PSW.1  ; USER FLAG 1
+  00D2          +1   207     OV       BIT   PSW.2  ; OVERFLOW FLAG
+  00D3          +1   208     RS0      BIT   PSW.3  ; REGISTER BANK SELECT 0
+  00D4          +1   209     RS1      BIT   PSW.4  ; REGISTER BANK SELECT 1
+  00D5          +1   210     F0       BIT   PSW.5  ; USER FLAG 0
+  00D6          +1   211     AC       BIT   PSW.6  ; AUXILIARY CARRY FLAG
+  00D7          +1   212     CY       BIT   PSW.7  ; CARRY FLAG
+                +1   213     ;
+                +1   214     ; PCA0CN D8H
+  00D8          +1   215     CCF0     BIT   PCA0CN.0 ; PCA 0 MODULE 0 INTERRUPT FLAG
+  00D9          +1   216     CCF1     BIT   PCA0CN.1 ; PCA 0 MODULE 1 INTERRUPT FLAG
+  00DA          +1   217     CCF2     BIT   PCA0CN.2 ; PCA 0 MODULE 2 INTERRUPT FLAG
+  00DB          +1   218     CCF3     BIT   PCA0CN.3 ; PCA 0 MODULE 3 INTERRUPT FLAG
+  00DC          +1   219     CCF4     BIT   PCA0CN.4 ; PCA 0 MODULE 4 INTERRUPT FLAG
+  00DE          +1   220     CR       BIT   PCA0CN.6 ; PCA 0 COUNTER RUN CONTROL BIT
+  00DF          +1   221     CF       BIT   PCA0CN.7 ; PCA 0 COUNTER OVERFLOW FLAG
+                +1   222     ;
+                +1   223     ; ADC0CN E8H
+  00E8          +1   224     AD0LJST  BIT   ADC0CN.0 ; ADC 0 RIGHT JUSTIFY DATA BIT
+  00E9          +1   225     AD0WINT  BIT   ADC0CN.1 ; ADC 0 WINDOW COMPARE INTERRUPT FLAG
+  00EA          +1   226     AD0STM0  BIT   ADC0CN.2 ; ADC 0 START OF CONVERSION MODE BIT 0
+  00EB          +1   227     AD0STM1  BIT   ADC0CN.3 ; ADC 0 START OF CONVERSION MODE BIT 1
+  00EC          +1   228     AD0BUSY  BIT   ADC0CN.4 ; ADC 0 BUSY FLAG
+  00ED          +1   229     AD0INT   BIT   ADC0CN.5 ; ADC 0 CONVERISION COMPLETE INTERRUPT FLAG 
+  00EE          +1   230     AD0TM    BIT   ADC0CN.6 ; ADC 0 TRACK MODE
+  00EF          +1   231     AD0EN    BIT   ADC0CN.7 ; ADC 0 ENABLE
+                +1   232     ;
+                +1   233     ; SPI0CN F8H
+  00F8          +1   234     SPIEN    BIT   SPI0CN.0 ; SPI 0 SPI ENABLE
+  00F9          +1   235     MSTEN    BIT   SPI0CN.1 ; SPI 0 MASTER ENABLE
+  00FA          +1   236     SLVSEL   BIT   SPI0CN.2 ; SPI 0 SLAVE SELECT
+  00FB          +1   237     TXBSY    BIT   SPI0CN.3 ; SPI 0 TX BUSY FLAG
+  00FC          +1   238     RXOVRN   BIT   SPI0CN.4 ; SPI 0 RX OVERRUN FLAG
+  00FD          +1   239     MODF     BIT   SPI0CN.5 ; SPI 0 MODE FAULT FLAG
+  00FE          +1   240     WCOL     BIT   SPI0CN.6 ; SPI 0 WRITE COLLISION FLAG
+  00FF          +1   241     SPIF     BIT   SPI0CN.7 ; SPI 0 INTERRUPT FLAG
+                     242     ;$include (Proj_ELN3.INC) 
+                +1   243     ;-----------------------------------------------------------------------------
+                +1   244     ;
+                +1   245     ;       FILE NAME       : Proj_ELN3.INC 
+                +1   246     ;       
+                +1   247     ;       DESCRIPTION     : Register/bit definitions for the ELN3 project.  
+                +1   248     ;
+                +1   249     ;       REVISION 1.0    
+                +1   250     ;
+                +1   251     ;-----------------------------------------------------------------------------
+                +1   252     ;REGISTER DEFINITIONS
+                +1   253     ;------------------------------------------------------------------------------
+                +1   254     
+                +1   255     ;-----------------------------------------------------------------------------
+                +1   256     ;Address DEFINITIONS
+A51 MACRO ASSEMBLER  BASE_SP                                                              06/11/2021 11:54:54 PAGE     5
+
+                +1   257     ;------------------------------------------------------------------------------
+  1000          +1   258     Reg_AFF  XDATA 1000H
+  1001          +1   259     Reg_GCP  XDATA 1001H
+  4000          +1   260     Reg_GCA  XDATA 4000H
+  4001          +1   261     Reg_GDD  XDATA 4001H
+  1002          +1   262     Reg_MISC XDATA 1002H
+                +1   263             
+                +1   264     ;------------------------------------------------------------------------------
+                +1   265     ;BIT DEFINITIONS for Application
+                +1   266     ;-----------------------------------------------------------------------------
+  0096          +1   267     GREEN_LED      BIT  P1.6              ; Port I/O pin connected to Green LED.
+                     268     
+                     269     ;-----------------------------------------------------------------------------
+                     270     ;******************************************************************************
+                     271     ;Declaration des variables et fonctions publiques
+                     272     ;******************************************************************************
+                     273     PUBLIC   _Read_code
+                     274     ;PUBLIC   _Read_Park_IN
+                     275     ;PUBLIC   _Read_Park_OUT
+                     276     PUBLIC   _Decod_BIN_to_BCD
+                     277     PUBLIC   _Decod_BCD_to_7Seg
+                     278     PUBLIC   _CDE_Display
+                     279     PUBLIC   _Test_Code_Acces
+                     280     PUBLIC   _Stockage_Code
+                     281     PUBLIC   _CDE_Barr
+                     282     PUBLIC   _CDE_FeuRouge
+                     283     PUBLIC   _CDE_FeuVert
+                     284     PUBLIC   _Read_BP_Alarm
+                     285     PUBLIC   _Read_IR_Detect
+                     286     PUBLIC   _Read_DP_1TO16
+                     287     PUBLIC   _Gestion_RTC
+                     288     PUBLIC   _RTC_to_ASCII
+                     289     PUBLIC   _Concat_String
+                     290     ;PUBLIC  _Send_STR_To_Terminal
+                     291     ;PUBLIC  _Conv_ItoA
+                     292     ;PUBLIC   _Conv_Tab
+                     293     PUBLIC   _Tri_Tab_histo
+                     294     PUBLIC   _Extract_Tab_histo
+                     295     PUBLIC   _String_code_nbre
+                     296     
+                     297     ;******************************************************************************
+                     298     ;Declaration des variables et fonctions Externes
+                     299     ;******************************************************************************
+                     300     EXTRN code (__tempo,Config_Timer3_BT_10ms,Init_pgm,Config_UART0) 
+                     301     EXTRN code (Putchar_UART0,Getchar_UART0,Send_Char)      ; Source Lib_Proj_ELN3
+                     302     Extrn code (Display_7S,Tab_code)
+                     303     Extrn code      (MSG_Park_IN,MSG_Park_NOK,MSG_Park_OUT,MSG_Park_Open,MSG_Park_UC)
+                     304     Extrn code  (MSG_Park_Fire,MSG_Start_System,MSG_Tab_Code,MSG_Tab_histo)
+                     305     Extrn code      (MSG_CODE_Nombre,MSG_Free_Places,MSG_Space,MSG_Free,MSG_Occupied)
+                     306     Extrn xdata (Tab_histo)
+                     307     Extrn idata (RTC_Centiemes,RTC_Secondes,RTC_Minutes)
+                     308     ;-----------------------------------------------------------------------------
+                     309     ; EQUATES
+                     310     ;-----------------------------------------------------------------------------
+                     311     
+                     312     ;-----------------------------------------------------------------------------
+                     313     ; CODE SEGMENT
+                     314     ;-----------------------------------------------------------------------------
+                     315     ProgSP_base      segment  CODE
+                     316     
+----                 317                    rseg     ProgSP_base      ; Switch to this code segment.
+                     318                    using    0              ; Specify register bank for the following
+                     319                                            ; program code.
+                     320     ;------------------------------------------------------------------------------
+                     321     ;******************************************************************************            
+                                 
+A51 MACRO ASSEMBLER  BASE_SP                                                              06/11/2021 11:54:54 PAGE     6
+
+                     322     ; SP1 -- _Read_code
+                     323     ;
+                     324     ; Description: 
+                     325     ;
+                     326     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) – Adresse du périphérique d’entrée GCA
+                     327     ; Valeur retournée: R7 : contient la valeur du code lu (sur les 6 bits de poids faible). 
+                     328     ; Registres modifiés: aucun
+                     329     ;******************************************************************************    
+                     330     
+0000                 331     _Read_code:
+                     332                   ; insérez le code du sous-programme ici
+0000 22              333                   RET
+                     334     ;******************************************************************************            
+                                            
+                     335                               
+                     336     ;******************************************************************************            
+                                 
+                     337     ; SP2 -- _Read_Park_IN
+                     338     ;
+                     339     ; Description: 
+                     340     ;
+                     341     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) – Adresse du périphérique d’entrée GDD
+                     342     ; Valeur retournée: Bit Carry  0: pas de détection / 1: véhicule détecté 
+                     343     ; Registres modifiés: aucun
+                     344     ;******************************************************************************    
+                     345     
+0001                 346     _Read_Park_IN:
+                     347                   ; insérez le code du sous-programme ici
+0001 22              348                   RET
+                     349     ;******************************************************************************            
+                                                                    
+                     350                               
+                     351     ;******************************************************************************            
+                                 
+                     352     ;  SP3 -- _Read_Park_OUT
+                     353     ;
+                     354     ; Description: 
+                     355     ;
+                     356     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) – Adresse du périphérique d’entrée GDD
+                     357     ; Valeur retournée: Bit Carry  0: pas de détection / 1: véhicule détecté 
+                     358     ; Registres modifiés: aucun
+                     359     ;******************************************************************************    
+                     360     
+0002                 361     _Read_Park_OUT:
+                     362                   ; insérez le code du sous-programme ici
+0002 22              363                   RET
+                     364     ;****************************************************************************** 
+                     365     
+                     366     ;******************************************************************************            
+                                 
+                     367     ;  SP4 -- _Decod_BIN_to_BCD 
+                     368     ;
+                     369     ; Description: 
+                     370     ;
+                     371     ; Paramètres d'entrée:  R7  – Valeur binaire 8 bits à convertir 
+                     372     ; Valeur retournée: R7 - Code BCD 2 X 4  
+                     373     ;                   si valeur d’entrée <= 63H sinon valeur retournée : FFH. 
+                     374     ; Registres modifiés: aucun
+                     375     ;******************************************************************************    
+                     376     
+0003                 377     _Decod_BIN_to_BCD:
+                     378                   ; insérez le code du sous-programme ici
+0003 22              379                   RET
+                     380                               
+                     381     ;****************************************************************************** 
+                     382     ;******************************************************************************            
+A51 MACRO ASSEMBLER  BASE_SP                                                              06/11/2021 11:54:54 PAGE     7
+
+                                 
+                     383     ; SP5 --  _Decod_BCD_to_7Seg
+                     384     ;
+                     385     ; Description: 
+                     386     ;
+                     387     ; Paramètres d'entrée:  R7  – Valeur BCD  2X4 bits à convertir
+                     388     ;                       R5  - Choix du digit à convertir 
+                     389     ;                              – 0 : digit Unités - != 0 : digit Dizaines
+                     390     ;                       R2 (MSB)- R3 (LSB) – Adresse de la table Display_7S 
+                     391     ;                                            en mémoire CODE
+                     392     ; Valeur retournée: R7 - Code 7 segments (Bit 0-Segment a __ Bit6-Segment g). 
+                     393     ;                   
+                     394     ; Registres modifiés: aucun
+                     395     ;******************************************************************************    
+                     396     
+0004                 397     _Decod_BCD_to_7Seg:
+                     398                   ; insérez le code du sous-programme ici
+0004 22              399                   RET
+                     400     ;****************************************************************************** ;**********
+                             ********************************************************************                
+                     401     ;  SP6 -- _CDE_Display  
+                     402     ;
+                     403     ; Description: 
+                     404     ;
+                     405     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) – Adresse du périphérique de sortie Registre AFF
+                     406     ; Paramètre d’entrée :  R5 – Code 7 segments (Bit 0-Segment a __ Bit6-Segment g)
+                     407     ; Paramètre d’entrée :  R3 – Commande de sélection du digit : 
+                     408     ;                       si R3= 0, Sélection du Digit Dizaines, 
+                     409     ;                       si R3 non nul : Sélection    du digit Unités
+                     410     ; Valeur retournée: R7 : contient une recopie de la valeur envoyée au registre AFF 
+                     411     ; Registres modifiés: aucun
+                     412     ;******************************************************************************    
+                     413     
+0005                 414     _CDE_Display:
+                     415                   ; insérez le code du sous-programme ici
+0005 22              416                   RET
+                     417     ;****************************************************************************** 
+                     418     
+                     419     ;******************************************************************************            
+                                 
+                     420     ;  SP7 -- _Test_Code_Acces  
+                     421     ;
+                     422     ; Description: 
+                     423     ;
+                     424     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) – Adresse de Tab_code (Mémoire CODE)
+                     425     ; Paramètre d’entrée :  R5 – Code 6 bits à vérifier (code sur 6 bit de pds faible, 
+                     426     ;                        les 2 bits de pds fort doivent être rendus inopérants,
+                     427     ;                        et donc mis à zéro)
+                     428     ; Valeur retournée: R7 : non nul, il retourne la position du code trouvé dans la table,
+                     429     ;                        nul, il indique que le code n’a pas été trouvé dans la table.
+                     430     ; Registres modifiés: aucun
+                     431     ;******************************************************************************    
+                     432     
+0006                 433     _Test_Code_Acces:
+                     434                   ; insérez le code du sous-programme ici
+0006 22              435                   RET
+                     436     ;****************************************************************************** 
+                     437     
+                     438     ;******************************************************************************            
+                                 
+                     439     ;  SP8 -- _Stockage_Code 
+                     440     ;
+                     441     ; Description: 
+                     442     ;
+                     443     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) – Adresse de Tab_histo (en XDATA)
+                     444     ; Paramètre d’entrée :  R5 – Information 8 bits à enregistrer
+A51 MACRO ASSEMBLER  BASE_SP                                                              06/11/2021 11:54:54 PAGE     8
+
+                     445     ;                      (code sur les 6 bits de poids faible, les 2 bits de pds fort 
+                     446     ;                        sont mis à zéro)
+                     447     ; Valeur retournée: R7 : non nul, il retourne le nombre d’enregistrements,
+                     448     ;                        nul, il indique que la table est pleine (100 enregistrements). 
+                     449     ; Registres modifiés: aucun
+                     450     ;******************************************************************************    
+                     451     
+0007                 452     _Stockage_Code:
+                     453                   ; insérez le code du sous-programme ici
+0007 22              454                   RET
+                     455     ;****************************************************************************** 
+                     456     
+                     457     ;******************************************************************************            
+                                 
+                     458     ;  SP9 -- _CDE_Barr
+                     459     ;
+                     460     ; Description: 
+                     461     ;
+                     462     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) – Adresse du périphérique de sortie 
+                     463     ;                                            (Registre MISC en XDATA)
+                     464     ; Paramètre d’entrée :  R5 – 0 : barrière fermée, != Barrière ouverte
+                     465     ;                      
+                     466     ; Valeur retournée: R7 : contient une recopie de la valeur envoyée au registre MISC
+                     467     ;                       
+                     468     ; Registres modifiés: aucun
+                     469     ;******************************************************************************    
+                     470     
+0008                 471     _CDE_Barr:
+                     472                   ; insérez le code du sous-programme ici
+0008 22              473                   RET
+                     474     ;****************************************************************************** 
+                     475     ;******************************************************************************            
+                                 
+                     476     ;  SP10 -- _CDE_FeuRouge 
+                     477     ;
+                     478     ; Description: 
+                     479     ;
+                     480     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) – Adresse du périphérique de sortie 
+                     481     ;                                            (Registre MISC en XDATA)
+                     482     ; Paramètre d’entrée :  : R5 – =0 --> feu éteint, !=0 --> feu allumé
+                     483     ;                      
+                     484     ; Valeur retournée: R7 : contient une recopie de la valeur envoyée au registre MISC
+                     485     ;                       
+                     486     ; Registres modifiés: aucun
+                     487     ;******************************************************************************    
+                     488     
+0009                 489     _CDE_FeuRouge:
+                     490                   ; insérez le code du sous-programme ici
+0009 22              491                   RET
+                     492     ;****************************************************************************** 
+                     493     
+                     494     ;****************************************************************************** 
+                     495     ;******************************************************************************            
+                                 
+                     496     ;  SP11 -- _CDE_FeuVert 
+                     497     ;
+                     498     ; Description: 
+                     499     ;
+                     500     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) – Adresse du périphérique de sortie 
+                     501     ;                                            (Registre MISC en XDATA)
+                     502     ; Paramètre d’entrée :  : R5 – =0 --> feu éteint, !=0 --> feu allumé
+                     503     ;                      
+                     504     ; Valeur retournée: R7 : contient une recopie de la valeur envoyée au registre MISC
+                     505     ;                       
+                     506     ; Registres modifiés: aucun
+                     507     ;******************************************************************************    
+A51 MACRO ASSEMBLER  BASE_SP                                                              06/11/2021 11:54:54 PAGE     9
+
+                     508     
+000A                 509     _CDE_FeuVert:
+                     510                   ; insérez le code du sous-programme ici
+000A 22              511                   RET
+                     512     ;****************************************************************************** 
+                     513     ;****************************************************************************** 
+                     514     ;******************************************************************************            
+                                 
+                     515     ;  SP12 -- _Read_BP_Alarm  
+                     516     ;
+                     517     ; Description: 
+                     518     ;
+                     519     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) – Adresse du périphérique de d'entrée 
+                     520     ;                                            (Registre GDD en XDATA)
+                     521     ;                      
+                     522     ; Valeur retournée: Bit C (Bit Carry) du registre PSW: 0 si bouton non activé, 
+                     523     ;                                                      1 si bouton pressé
+                     524     ;                       
+                     525     ; Registres modifiés: aucun
+                     526     ;******************************************************************************    
+                     527     
+000B                 528     _Read_BP_Alarm:
+                     529                   ; insérez le code du sous-programme ici
+000B 22              530                   RET
+                     531     ;****************************************************************************** 
+                     532     ;****************************************************************************** 
+                     533     ;******************************************************************************            
+                                 
+                     534     ;  SP13 --  _Read_IR_Detect   
+                     535     ;
+                     536     ; Description: 
+                     537     ;
+                     538     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) – Adresse du périphérique de d'entrée 
+                     539     ;                                            (Registre GDD en XDATA)
+                     540     ;                      
+                     541     ; Valeur retournée: R7 : contient la valeur des capteurs 
+                     542     ;                        (sur les 4 bits de poids faible).. 
+                     543     ;                       
+                     544     ; Registres modifiés: aucun
+                     545     ;******************************************************************************    
+                     546     
+000C                 547     _Read_IR_Detect:
+                     548                   ; insérez le code du sous-programme ici
+000C 22              549                   RET
+                     550     ;****************************************************************************** 
+                     551     ;****************************************************************************** 
+                     552     ;******************************************************************************            
+                                 
+                     553     ;  SP14 --_Read_DP_1TO16    
+                     554     ;
+                     555     ; Description: 
+                     556     ;
+                     557     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) – Adresse du périphérique de sortie
+                     558     ;                                            (Registre G en XDATA)
+                     559     ;                      
+                     560     ; Valeur retournée: R7 : contient la valeur des capteurs 
+                     561     ;                        (sur les 4 bits de poids faible).. 
+                     562     ;                       
+                     563     ; Registres modifiés: aucun
+                     564     ;******************************************************************************    
+                     565     
+000D                 566     _Read_DP_1TO16:
+                     567                   ; insérez le code du sous-programme ici
+000D 22              568                   RET
+                     569     ;****************************************************************************** 
+                     570     ;****************************************************************************** 
+A51 MACRO ASSEMBLER  BASE_SP                                                              06/11/2021 11:54:54 PAGE    10
+
+                     571     ;******************************************************************************            
+                                 
+                     572     ;  SP15 --_Gestion_RTC     
+                     573     ;
+                     574     ; Description: 
+                     575     ;
+                     576     ; Paramètres d'entrée:  R7  – Adresse en IDATA de la variable RTC_Centiemes
+                     577     ;                                            
+                     578     ;                      
+                     579     ; Valeur retournée: aucune
+                     580     ;                       
+                     581     ;                       
+                     582     ; Registres modifiés: aucun
+                     583     ;******************************************************************************    
+                     584     
+000E                 585     _Gestion_RTC:
+                     586                   ; insérez le code du sous-programme ici
+000E 22              587                   RET
+                     588     ;****************************************************************************** 
+                     589     ;****************************************************************************** 
+                     590     ;******************************************************************************            
+                                 
+                     591     ;  SP16 -- _RTC_to_ASCII  
+                     592     ;
+                     593     ; Description: 
+                     594     ;
+                     595     ; Paramètres d'entrée:  R7 -  Adresse en IDATA de la variable RTC_Secondes 
+                     596     ;                       R4 (MSB)- R5 (LSB) - – Adresse de la chaine produite en XDATA
+                     597     ;                      
+                     598     ; Valeur retournée: aucune
+                     599     ;                       
+                     600     ;                       
+                     601     ; Registres modifiés: aucun
+                     602     ;******************************************************************************    
+                     603     
+000F                 604     _RTC_to_ASCII:
+                     605                   ; insérez le code du sous-programme ici
+000F 22              606                   RET
+                     607     ;****************************************************************************** 
+                     608     ;****************************************************************************** 
+                     609     ;******************************************************************************            
+                                 
+                     610     ;  SP17 -- _Concat_String   
+                     611     ;
+                     612     ; Description: 
+                     613     ;
+                     614     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) - – Adresse de la chaine 1 en XDATA
+                     615     ;                       R4 (MSB)- R5 (LSB) - – Adresse de la chaine 2 en XDATA
+                     616     ;                       R2 (MSB)- R3 (LSB) - – Adresse de la chaine produite (1+2) en XDATA
+                     617     ;                      
+                     618     ; Valeur retournée: aucune
+                     619     ;                       
+                     620     ;                       
+                     621     ; Registres modifiés: aucun
+                     622     ;******************************************************************************    
+                     623     
+0010                 624     _Concat_String :
+                     625                   ; insérez le code du sous-programme ici
+0010 22              626                   RET
+                     627     ;****************************************************************************** 
+                     628     ;****************************************************************************** 
+                     629     ;******************************************************************************            
+                                 
+                     630     ;  SP18 -- _Send_STR_To_Terminal  
+                     631     ;
+                     632     ; Description: 
+A51 MACRO ASSEMBLER  BASE_SP                                                              06/11/2021 11:54:54 PAGE    11
+
+                     633     ;
+                     634     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) - Adresse de la chaine à transmettre
+                     635     ;                                              (stockée en XDATA)                          
+                                       
+                     636     ;                      
+                     637     ; Valeur retournée: aucune
+                     638     ;                       
+                     639     ;                       
+                     640     ; Registres modifiés: aucun
+                     641     ;******************************************************************************    
+0011                 642     _Send_STR_To_Terminal:
+                     643                   ; insérez le code du sous-programme ici
+0011 22              644                   RET
+                     645     ;****************************************************************************** 
+                     646     ;****************************************************************************** 
+                     647     ;******************************************************************************            
+                                 
+                     648     ;  SP19 -- _Conv_ItoA   
+                     649     ;
+                     650     ; Description: 
+                     651     ;
+                     652     ; Paramètres d'entrée:  R7 - – Valeur à convertir
+                     653     ;                                            
+                     654     ;                      
+                     655     ; Valeur retournée: R7 code ASCII des unités
+                     656     ;                   R6 code ASCII des dizaines    
+                     657     ;                       
+                     658     ; Registres modifiés: aucun
+                     659     ;******************************************************************************    
+                     660     
+0012                 661     _Conv_ItoA:
+                     662                   ; insérez le code du sous-programme ici
+0012 22              663                   RET
+                     664     ;****************************************************************************** 
+                     665     ;****************************************************************************** 
+                     666     ;******************************************************************************            
+                                 
+                     667     ;  SP20 -- _Conv_Tab   
+                     668     ;
+                     669     ; Description: 
+                     670     ;
+                     671     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) Adresse de la table de valeur à convertir
+                     672     ;                       R5 : Indique l’espace mémoire sur lequel pointe l’adresse
+                     673     ;                            passée en R6-R7 R5 = 0 --> XDATA,  R5 !=0  --> CODE
+                     674     ;                       R2 (MSB)- R3 (LSB) - – Adresse de la chaine produite en XDATA      
+                                            
+                     675     ;                      
+                     676     ; Valeur retournée: aucune
+                     677     ;                       
+                     678     ;                       
+                     679     ; Registres modifiés: aucun
+                     680     ;******************************************************************************    
+                     681     
+0013                 682     _Conv_Tab:
+                     683                   ; insérez le code du sous-programme ici
+0013 22              684                   RET
+                     685     ;****************************************************************************** 
+                     686     ;****************************************************************************** 
+                     687     ;******************************************************************************            
+                                 
+                     688     ;  SP21 -- _Tri_Tab_histo 
+                     689     ;
+                     690     ; Description: 
+                     691     ;
+                     692     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) – Adresse de Tab_histo (en XDATA)
+                     693     ;                                        
+A51 MACRO ASSEMBLER  BASE_SP                                                              06/11/2021 11:54:54 PAGE    12
+
+                     694     ;                      
+                     695     ; Valeur retournée: aucune
+                     696     ;                       
+                     697     ;                       
+                     698     ; Registres modifiés: aucun
+                     699     ;******************************************************************************    
+                     700     
+0014                 701     _Tri_Tab_histo :
+                     702                   ; insérez le code du sous-programme ici
+0014 22              703                   RET
+                     704     ;****************************************************************************** 
+                     705     ;****************************************************************************** 
+                     706     ;******************************************************************************            
+                                 
+                     707     ;  SP22 -- _Extract_Tab_histo 
+                     708     ;
+                     709     ; Description: 
+                     710     ;
+                     711     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) – Adresse de Tab_histo (en XDATA)
+                     712     ;                       R4 (MSB)- R5 (LSB) – Adresse de Tab_histo_code (en XDATA)
+                     713     ;                       R2 (MSB)- R3 (LSB) – Adresse de Tab_histo_nbre (en XDATA)
+                     714     ;                                    
+                     715     ; Valeur retournée: aucune
+                     716     ;                                           
+                     717     ; Registres modifiés: aucun
+                     718     ;******************************************************************************    
+                     719     
+0015                 720     _Extract_Tab_histo:
+                     721                   ; insérez le code du sous-programme ici
+0015 22              722                   RET
+                     723     ;****************************************************************************** 
+                     724     ;****************************************************************************** 
+                     725     ;******************************************************************************            
+                                 
+                     726     ;  SP23 -- _String_code_nbre
+                     727     ;
+                     728     ; Description: 
+                     729     ;
+                     730     ; Paramètres d'entrée:  R6 (MSB)- R7 (LSB) – Adresse de String_dest (en XDATA) (adresse de 
+                             la chaine destination)
+                     731     ;                       R4 (MSB)- R5 (LSB) – Adresse de Tab_histo_code (en XDATA)
+                     732     ;                       R2 (MSB)- R3 (LSB) – Adresse de Tab_histo_nbre (en XDATA)
+                     733     ;                    
+                     734     ; Valeur retournée: aucune
+                     735     ;                          
+                     736     ; Registres modifiés: aucun
+                     737     ;******************************************************************************    
+                     738     
+0016                 739     _String_code_nbre:
+                     740                   ; insérez le code du sous-programme ici
+0016 22              741                   RET
+                     742     ;****************************************************************************** 
+                     743     END
+                             
+                             
+                             
+A51 MACRO ASSEMBLER  BASE_SP                                                              06/11/2021 11:54:54 PAGE    13
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                T Y P E  V A L U E   ATTRIBUTES
+
+AA. . . . . . . . . .  B ADDR   00C0H.2 A   
+AC. . . . . . . . . .  B ADDR   00D0H.6 A   
+ACC . . . . . . . . .  D ADDR   00E0H   A   
+AD0BUSY . . . . . . .  B ADDR   00E8H.4 A   
+AD0EN . . . . . . . .  B ADDR   00E8H.7 A   
+AD0INT. . . . . . . .  B ADDR   00E8H.5 A   
+AD0LJST . . . . . . .  B ADDR   00E8H.0 A   
+AD0STM0 . . . . . . .  B ADDR   00E8H.2 A   
+AD0STM1 . . . . . . .  B ADDR   00E8H.3 A   
+AD0TM . . . . . . . .  B ADDR   00E8H.6 A   
+AD0WINT . . . . . . .  B ADDR   00E8H.1 A   
+ADC0CF. . . . . . . .  D ADDR   00BCH   A   
+ADC0CN. . . . . . . .  D ADDR   00E8H   A   
+ADC0GTH . . . . . . .  D ADDR   00C5H   A   
+ADC0GTL . . . . . . .  D ADDR   00C4H   A   
+ADC0H . . . . . . . .  D ADDR   00BFH   A   
+ADC0L . . . . . . . .  D ADDR   00BEH   A   
+ADC0LTH . . . . . . .  D ADDR   00C7H   A   
+ADC0LTL . . . . . . .  D ADDR   00C6H   A   
+ADC1. . . . . . . . .  D ADDR   009CH   A   
+ADC1CF. . . . . . . .  D ADDR   00ABH   A   
+ADC1CN. . . . . . . .  D ADDR   00AAH   A   
+AMX0CF. . . . . . . .  D ADDR   00BAH   A   
+AMX0SL. . . . . . . .  D ADDR   00BBH   A   
+AMX1SL. . . . . . . .  D ADDR   00ACH   A   
+B . . . . . . . . . .  D ADDR   00F0H   A   
+CCF0. . . . . . . . .  B ADDR   00D8H.0 A   
+CCF1. . . . . . . . .  B ADDR   00D8H.1 A   
+CCF2. . . . . . . . .  B ADDR   00D8H.2 A   
+CCF3. . . . . . . . .  B ADDR   00D8H.3 A   
+CCF4. . . . . . . . .  B ADDR   00D8H.4 A   
+CF. . . . . . . . . .  B ADDR   00D8H.7 A   
+CKCON . . . . . . . .  D ADDR   008EH   A   
+CONFIG_TIMER3_BT_10MS  C ADDR   -----       EXT
+CONFIG_UART0. . . . .  C ADDR   -----       EXT
+CPRL2 . . . . . . . .  B ADDR   00C8H.0 A   
+CPT0CN. . . . . . . .  D ADDR   009EH   A   
+CPT1CN. . . . . . . .  D ADDR   009FH   A   
+CR. . . . . . . . . .  B ADDR   00D8H.6 A   
+CT2 . . . . . . . . .  B ADDR   00C8H.1 A   
+CY. . . . . . . . . .  B ADDR   00D0H.7 A   
+DAC0CN. . . . . . . .  D ADDR   00D4H   A   
+DAC0H . . . . . . . .  D ADDR   00D3H   A   
+DAC0L . . . . . . . .  D ADDR   00D2H   A   
+DAC1CN. . . . . . . .  D ADDR   00D7H   A   
+DAC1H . . . . . . . .  D ADDR   00D6H   A   
+DAC1L . . . . . . . .  D ADDR   00D5H   A   
+DISPLAY_7S. . . . . .  C ADDR   -----       EXT
+DPH . . . . . . . . .  D ADDR   0083H   A   
+DPL . . . . . . . . .  D ADDR   0082H   A   
+EA. . . . . . . . . .  B ADDR   00A8H.7 A   
+EIE1. . . . . . . . .  D ADDR   00E6H   A   
+EIE2. . . . . . . . .  D ADDR   00E7H   A   
+EIP1. . . . . . . . .  D ADDR   00F6H   A   
+EIP2. . . . . . . . .  D ADDR   00F7H   A   
+EMI0CF. . . . . . . .  D ADDR   00A3H   A   
+EMI0CN. . . . . . . .  D ADDR   00AFH   A   
+EMI0TC. . . . . . . .  D ADDR   00A1H   A   
+ENSMB . . . . . . . .  B ADDR   00C0H.6 A   
+ES. . . . . . . . . .  B ADDR   00A8H.4 A   
+A51 MACRO ASSEMBLER  BASE_SP                                                              06/11/2021 11:54:54 PAGE    14
+
+ET0 . . . . . . . . .  B ADDR   00A8H.1 A   
+ET1 . . . . . . . . .  B ADDR   00A8H.3 A   
+ET2 . . . . . . . . .  B ADDR   00A8H.5 A   
+EX0 . . . . . . . . .  B ADDR   00A8H.0 A   
+EX1 . . . . . . . . .  B ADDR   00A8H.2 A   
+EXEN2 . . . . . . . .  B ADDR   00C8H.3 A   
+EXF2. . . . . . . . .  B ADDR   00C8H.6 A   
+F0. . . . . . . . . .  B ADDR   00D0H.5 A   
+F1. . . . . . . . . .  B ADDR   00D0H.1 A   
+FLACL . . . . . . . .  D ADDR   00B7H   A   
+FLSCL . . . . . . . .  D ADDR   00B6H   A   
+GETCHAR_UART0 . . . .  C ADDR   -----       EXT
+GREEN_LED . . . . . .  B ADDR   0090H.6 A   
+IE. . . . . . . . . .  D ADDR   00A8H   A   
+IE0 . . . . . . . . .  B ADDR   0088H.1 A   
+IE1 . . . . . . . . .  B ADDR   0088H.3 A   
+INIT_PGM. . . . . . .  C ADDR   -----       EXT
+IP. . . . . . . . . .  D ADDR   00B8H   A   
+IT0 . . . . . . . . .  B ADDR   0088H.0 A   
+IT1 . . . . . . . . .  B ADDR   0088H.2 A   
+MODF. . . . . . . . .  B ADDR   00F8H.5 A   
+MSG_CODE_NOMBRE . . .  C ADDR   -----       EXT
+MSG_FREE. . . . . . .  C ADDR   -----       EXT
+MSG_FREE_PLACES . . .  C ADDR   -----       EXT
+MSG_OCCUPIED. . . . .  C ADDR   -----       EXT
+MSG_PARK_FIRE . . . .  C ADDR   -----       EXT
+MSG_PARK_IN . . . . .  C ADDR   -----       EXT
+MSG_PARK_NOK. . . . .  C ADDR   -----       EXT
+MSG_PARK_OPEN . . . .  C ADDR   -----       EXT
+MSG_PARK_OUT. . . . .  C ADDR   -----       EXT
+MSG_PARK_UC . . . . .  C ADDR   -----       EXT
+MSG_SPACE . . . . . .  C ADDR   -----       EXT
+MSG_START_SYSTEM. . .  C ADDR   -----       EXT
+MSG_TAB_CODE. . . . .  C ADDR   -----       EXT
+MSG_TAB_HISTO . . . .  C ADDR   -----       EXT
+MSTEN . . . . . . . .  B ADDR   00F8H.1 A   
+OSCICN. . . . . . . .  D ADDR   00B2H   A   
+OSCXCN. . . . . . . .  D ADDR   00B1H   A   
+OV. . . . . . . . . .  B ADDR   00D0H.2 A   
+P . . . . . . . . . .  B ADDR   00D0H.0 A   
+P0. . . . . . . . . .  D ADDR   0080H   A   
+P0MDOUT . . . . . . .  D ADDR   00A4H   A   
+P1. . . . . . . . . .  D ADDR   0090H   A   
+P1MDIN. . . . . . . .  D ADDR   00BDH   A   
+P1MDOUT . . . . . . .  D ADDR   00A5H   A   
+P2. . . . . . . . . .  D ADDR   00A0H   A   
+P2MDOUT . . . . . . .  D ADDR   00A6H   A   
+P3. . . . . . . . . .  D ADDR   00B0H   A   
+P3IF. . . . . . . . .  D ADDR   00ADH   A   
+P3MDOUT . . . . . . .  D ADDR   00A7H   A   
+P4. . . . . . . . . .  D ADDR   0084H   A   
+P5. . . . . . . . . .  D ADDR   0085H   A   
+P6. . . . . . . . . .  D ADDR   0086H   A   
+P7. . . . . . . . . .  D ADDR   0096H   A   
+P74OUT. . . . . . . .  D ADDR   00B5H   A   
+PCA0CN. . . . . . . .  D ADDR   00D8H   A   
+PCA0CPH0. . . . . . .  D ADDR   00FAH   A   
+PCA0CPH1. . . . . . .  D ADDR   00FBH   A   
+PCA0CPH2. . . . . . .  D ADDR   00FCH   A   
+PCA0CPH3. . . . . . .  D ADDR   00FDH   A   
+PCA0CPH4. . . . . . .  D ADDR   00FEH   A   
+PCA0CPL0. . . . . . .  D ADDR   00EAH   A   
+PCA0CPL1. . . . . . .  D ADDR   00EBH   A   
+PCA0CPL2. . . . . . .  D ADDR   00ECH   A   
+PCA0CPL3. . . . . . .  D ADDR   00EDH   A   
+PCA0CPL4. . . . . . .  D ADDR   00EEH   A   
+A51 MACRO ASSEMBLER  BASE_SP                                                              06/11/2021 11:54:54 PAGE    15
+
+PCA0CPM0. . . . . . .  D ADDR   00DAH   A   
+PCA0CPM1. . . . . . .  D ADDR   00DBH   A   
+PCA0CPM2. . . . . . .  D ADDR   00DCH   A   
+PCA0CPM3. . . . . . .  D ADDR   00DDH   A   
+PCA0CPM4. . . . . . .  D ADDR   00DEH   A   
+PCA0H . . . . . . . .  D ADDR   00F9H   A   
+PCA0L . . . . . . . .  D ADDR   00E9H   A   
+PCA0MD. . . . . . . .  D ADDR   00D9H   A   
+PCON. . . . . . . . .  D ADDR   0087H   A   
+PROGSP_BASE . . . . .  C SEG    0017H       REL=UNIT
+PS. . . . . . . . . .  B ADDR   00B8H.4 A   
+PSCTL . . . . . . . .  D ADDR   008FH   A   
+PSW . . . . . . . . .  D ADDR   00D0H   A   
+PT0 . . . . . . . . .  B ADDR   00B8H.1 A   
+PT1 . . . . . . . . .  B ADDR   00B8H.3 A   
+PT2 . . . . . . . . .  B ADDR   00B8H.5 A   
+PUTCHAR_UART0 . . . .  C ADDR   -----       EXT
+PX0 . . . . . . . . .  B ADDR   00B8H.0 A   
+PX1 . . . . . . . . .  B ADDR   00B8H.2 A   
+RB8 . . . . . . . . .  B ADDR   0098H.2 A   
+RCAP2H. . . . . . . .  D ADDR   00CBH   A   
+RCAP2L. . . . . . . .  D ADDR   00CAH   A   
+RCAP4H. . . . . . . .  D ADDR   00E5H   A   
+RCAP4L. . . . . . . .  D ADDR   00E4H   A   
+RCLK. . . . . . . . .  B ADDR   00C8H.5 A   
+REF0CN. . . . . . . .  D ADDR   00D1H   A   
+REG_AFF . . . . . . .  X ADDR   1000H   A   
+REG_GCA . . . . . . .  X ADDR   4000H   A   
+REG_GCP . . . . . . .  X ADDR   1001H   A   
+REG_GDD . . . . . . .  X ADDR   4001H   A   
+REG_MISC. . . . . . .  X ADDR   1002H   A   
+REN . . . . . . . . .  B ADDR   0098H.4 A   
+RI. . . . . . . . . .  B ADDR   0098H.0 A   
+RS0 . . . . . . . . .  B ADDR   00D0H.3 A   
+RS1 . . . . . . . . .  B ADDR   00D0H.4 A   
+RSTSRC. . . . . . . .  D ADDR   00EFH   A   
+RTC_CENTIEMES . . . .  I ADDR   -----       EXT
+RTC_MINUTES . . . . .  I ADDR   -----       EXT
+RTC_SECONDES. . . . .  I ADDR   -----       EXT
+RXOVRN. . . . . . . .  B ADDR   00F8H.4 A   
+SADDR0. . . . . . . .  D ADDR   00A9H   A   
+SADDR1. . . . . . . .  D ADDR   00F3H   A   
+SADEN0. . . . . . . .  D ADDR   00B9H   A   
+SADEN1. . . . . . . .  D ADDR   00AEH   A   
+SBUF0 . . . . . . . .  D ADDR   0099H   A   
+SBUF1 . . . . . . . .  D ADDR   00F2H   A   
+SCON0 . . . . . . . .  D ADDR   0098H   A   
+SCON1 . . . . . . . .  D ADDR   00F1H   A   
+SEND_CHAR . . . . . .  C ADDR   -----       EXT
+SI. . . . . . . . . .  B ADDR   00C0H.3 A   
+SLVSEL. . . . . . . .  B ADDR   00F8H.2 A   
+SM0 . . . . . . . . .  B ADDR   0098H.7 A   
+SM1 . . . . . . . . .  B ADDR   0098H.6 A   
+SM2 . . . . . . . . .  B ADDR   0098H.5 A   
+SMB0ADR . . . . . . .  D ADDR   00C3H   A   
+SMB0CN. . . . . . . .  D ADDR   00C0H   A   
+SMB0CR. . . . . . . .  D ADDR   00CFH   A   
+SMB0DAT . . . . . . .  D ADDR   00C2H   A   
+SMB0STA . . . . . . .  D ADDR   00C1H   A   
+SMBFTE. . . . . . . .  B ADDR   00C0H.1 A   
+SMBTOE. . . . . . . .  B ADDR   00C0H.0 A   
+SP. . . . . . . . . .  D ADDR   0081H   A   
+SPI0CFG . . . . . . .  D ADDR   009AH   A   
+SPI0CKR . . . . . . .  D ADDR   009DH   A   
+SPI0CN. . . . . . . .  D ADDR   00F8H   A   
+SPI0DAT . . . . . . .  D ADDR   009BH   A   
+A51 MACRO ASSEMBLER  BASE_SP                                                              06/11/2021 11:54:54 PAGE    16
+
+SPIEN . . . . . . . .  B ADDR   00F8H.0 A   
+SPIF. . . . . . . . .  B ADDR   00F8H.7 A   
+STA . . . . . . . . .  B ADDR   00C0H.5 A   
+STO . . . . . . . . .  B ADDR   00C0H.4 A   
+T2CON . . . . . . . .  D ADDR   00C8H   A   
+T4CON . . . . . . . .  D ADDR   00C9H   A   
+TAB_CODE. . . . . . .  C ADDR   -----       EXT
+TAB_HISTO . . . . . .  X ADDR   -----       EXT
+TB8 . . . . . . . . .  B ADDR   0098H.3 A   
+TCLK. . . . . . . . .  B ADDR   00C8H.4 A   
+TCON. . . . . . . . .  D ADDR   0088H   A   
+TF0 . . . . . . . . .  B ADDR   0088H.5 A   
+TF1 . . . . . . . . .  B ADDR   0088H.7 A   
+TF2 . . . . . . . . .  B ADDR   00C8H.7 A   
+TH0 . . . . . . . . .  D ADDR   008CH   A   
+TH1 . . . . . . . . .  D ADDR   008DH   A   
+TH2 . . . . . . . . .  D ADDR   00CDH   A   
+TH4 . . . . . . . . .  D ADDR   00F5H   A   
+TI. . . . . . . . . .  B ADDR   0098H.1 A   
+TL0 . . . . . . . . .  D ADDR   008AH   A   
+TL1 . . . . . . . . .  D ADDR   008BH   A   
+TL2 . . . . . . . . .  D ADDR   00CCH   A   
+TL4 . . . . . . . . .  D ADDR   00F4H   A   
+TMOD. . . . . . . . .  D ADDR   0089H   A   
+TMR3CN. . . . . . . .  D ADDR   0091H   A   
+TMR3H . . . . . . . .  D ADDR   0095H   A   
+TMR3L . . . . . . . .  D ADDR   0094H   A   
+TMR3RLH . . . . . . .  D ADDR   0093H   A   
+TMR3RLL . . . . . . .  D ADDR   0092H   A   
+TR0 . . . . . . . . .  B ADDR   0088H.4 A   
+TR1 . . . . . . . . .  B ADDR   0088H.6 A   
+TR2 . . . . . . . . .  B ADDR   00C8H.2 A   
+TXBSY . . . . . . . .  B ADDR   00F8H.3 A   
+WCOL. . . . . . . . .  B ADDR   00F8H.6 A   
+WDTCN . . . . . . . .  D ADDR   00FFH   A   
+XBR0. . . . . . . . .  D ADDR   00E1H   A   
+XBR1. . . . . . . . .  D ADDR   00E2H   A   
+XBR2. . . . . . . . .  D ADDR   00E3H   A   
+_CDE_BARR . . . . . .  C ADDR   0008H   R   SEG=PROGSP_BASE
+_CDE_DISPLAY. . . . .  C ADDR   0005H   R   SEG=PROGSP_BASE
+_CDE_FEUROUGE . . . .  C ADDR   0009H   R   SEG=PROGSP_BASE
+_CDE_FEUVERT. . . . .  C ADDR   000AH   R   SEG=PROGSP_BASE
+_CONCAT_STRING. . . .  C ADDR   0010H   R   SEG=PROGSP_BASE
+_CONV_ITOA. . . . . .  C ADDR   0012H   R   SEG=PROGSP_BASE
+_CONV_TAB . . . . . .  C ADDR   0013H   R   SEG=PROGSP_BASE
+_DECOD_BCD_TO_7SEG. .  C ADDR   0004H   R   SEG=PROGSP_BASE
+_DECOD_BIN_TO_BCD . .  C ADDR   0003H   R   SEG=PROGSP_BASE
+_EXTRACT_TAB_HISTO. .  C ADDR   0015H   R   SEG=PROGSP_BASE
+_GESTION_RTC. . . . .  C ADDR   000EH   R   SEG=PROGSP_BASE
+_READ_BP_ALARM. . . .  C ADDR   000BH   R   SEG=PROGSP_BASE
+_READ_CODE. . . . . .  C ADDR   0000H   R   SEG=PROGSP_BASE
+_READ_DP_1TO16. . . .  C ADDR   000DH   R   SEG=PROGSP_BASE
+_READ_IR_DETECT . . .  C ADDR   000CH   R   SEG=PROGSP_BASE
+_READ_PARK_IN . . . .  C ADDR   0001H   R   SEG=PROGSP_BASE
+_READ_PARK_OUT. . . .  C ADDR   0002H   R   SEG=PROGSP_BASE
+_RTC_TO_ASCII . . . .  C ADDR   000FH   R   SEG=PROGSP_BASE
+_SEND_STR_TO_TERMINAL  C ADDR   0011H   R   SEG=PROGSP_BASE
+_STOCKAGE_CODE. . . .  C ADDR   0007H   R   SEG=PROGSP_BASE
+_STRING_CODE_NBRE . .  C ADDR   0016H   R   SEG=PROGSP_BASE
+_TEST_CODE_ACCES. . .  C ADDR   0006H   R   SEG=PROGSP_BASE
+_TRI_TAB_HISTO. . . .  C ADDR   0014H   R   SEG=PROGSP_BASE
+__TEMPO . . . . . . .  C ADDR   -----       EXT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
